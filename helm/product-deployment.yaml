@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-products
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ecommerce-products
+  template:
+    metadata:
+      labels:
+        app: ecommerce-products
+    spec:
+      containers:
+        - name: ecommerce-products
+          image: dickypratamss/ecommerce-products:latest
+          ports:
+            - containerPort: 9001 # HTTP
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"

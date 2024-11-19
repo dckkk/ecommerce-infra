@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecommerce-payments
+spec:
+  selector:
+    app: ecommerce-payments
+  type: NodePort
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 9003 # HTTP
+      nodePort: 30013

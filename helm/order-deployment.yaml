@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-order
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ecommerce-order
+  template:
+    metadata:
+      labels:
+        app: ecommerce-order
+    spec:
+      containers:
+        - name: ecommerce-order
+          image: dickypratamss/ecommerce-order:latest
+          ports:
+            - containerPort: 9002 # HTTP
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
